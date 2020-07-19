@@ -12,7 +12,7 @@ export const Upload: React.FC = () => {
     const params = new FormData()
     params.append('file', files[0])
     axios
-      .post('http://localhost:3000/api/upload/', params, {
+      .post('/api/upload/', params, {
         headers: { 'content-type': 'multipart/form-data' }
       })
       .then((result) => {
