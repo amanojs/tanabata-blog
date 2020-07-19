@@ -5,10 +5,11 @@
   "main": "./server/index.js",
   "scripts": {
     "client": "webpack-dev-server --config ./client/config/webpack.config.dev.js --open --mode development",
-    "server": "nodemon server/server.js --exec babel-node",
+    "server": "nodemon --ignore blogs/ server/server.js --exec babel-node",
     "build": "webpack --config ./client/config/webpack.config.js --mode development",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "npm run build && npm run server"
+    "start": "npm run build && npm run server",
+    "md": "processmd blogs/markdowns/*.md --stdout --preview 100 --outputDir blogs/jsons > blogs/summary.json"
   },
   "author": "amanojs",
   "license": "ISC",
@@ -33,6 +34,7 @@
     "concurrently": "^5.2.0",
     "html-webpack-plugin": "^4.3.0",
     "nodemon": "^2.0.4",
+    "processmd": "^4.5.0",
     "ts-loader": "^8.0.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
