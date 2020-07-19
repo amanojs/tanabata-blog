@@ -41,6 +41,10 @@ app.get('/api', (req, res) => {
   )
 })
 
+app.get('/api/getBlogs/', (req, res) => {
+  res.sendFile(path.join('./', 'blogs', 'summary.json'), { root: '.' })
+})
+
 app.get('/', (req, res) => {
   console.log('アクセスされました')
   res.sendFile(path.join('./', 'client', 'dist', 'index.html'), { root: '.' })
