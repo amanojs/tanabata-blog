@@ -1,0 +1,21 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Test } from './test'
+import { Typescript } from './typescript'
+
+const Index = () => {
+  fetch('/api/').then((response) => {
+    response.json().then((value) => {
+      console.log(value.test)
+    })
+  })
+  return (
+    <div>
+      Hello React!
+      <Test />
+      <Typescript />
+    </div>
+  )
+}
+
+ReactDOM.render(<Index />, document.getElementById('app'))
