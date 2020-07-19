@@ -1,9 +1,11 @@
 import express from 'express'
 import path from 'path'
 import multer from 'multer'
+import cors from 'cors'
 const router = express.Router()
 
 const app = express()
+app.use(cors())
 
 app.use(
   '/index.bundle.js',
