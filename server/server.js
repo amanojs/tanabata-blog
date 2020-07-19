@@ -12,9 +12,7 @@ app.use(
 )
 
 const storage = multer.diskStorage({
-  // ファイルの保存先を指定
   destination: path.join('./', 'blogs', 'markdowns'),
-  // ファイル名を指定(オリジナルのファイル名を指定)
   filename: function (req, file, cb) {
     cb(null, file.originalname)
   }
