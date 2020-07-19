@@ -7,7 +7,7 @@ import { Upload } from './pages/Upload'
 const Index = () => {
   fetch('/api/').then((response) => {
     response.json().then((value) => {
-      console.log(value.test)
+      console.log(value)
     })
   })
   return (

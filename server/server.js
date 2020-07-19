@@ -30,7 +30,15 @@ const userRouter = require('./api/routers/userRouter')
 userRouter(app)
 
 app.get('/api', (req, res) => {
-  res.send({ test: 'test response' })
+  res.sendFile(
+    path.join(
+      './',
+      'blogs',
+      'jsons',
+      'JavaScriptでサーバから配信されているHTMLファイルを取得する.json'
+    ),
+    { root: '.' }
+  )
 })
 
 app.get('/', (req, res) => {
