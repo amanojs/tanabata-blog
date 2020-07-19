@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
 import { Test } from './test'
 import { Typescript } from './typescript'
 import { Upload } from './pages/Upload'
@@ -25,6 +26,7 @@ const Index = () => {
 
   return (
     <div>
+      <App />
       Hello React!
       <Test />
       <Typescript />
