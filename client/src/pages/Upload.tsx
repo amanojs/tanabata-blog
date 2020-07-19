@@ -1,5 +1,6 @@
 import * as React from 'react'
 import axios from 'axios'
+import Button from '@material-ui/core/Button'
 
 export const Upload: React.FC = () => {
   const [files, setFiles] = React.useState<FileList | null>(null)
@@ -30,7 +31,9 @@ export const Upload: React.FC = () => {
         name="mdfile"
         onChange={(e) => selectFile(e)}
       />
-      <button onClick={() => upFile()}>送信</button>
+      <Button variant="contained" color="primary" onClick={() => upFile()}>
+        送信
+      </Button>
     </React.Fragment>
   )
 }
