@@ -12,11 +12,11 @@ export const Upload: React.FC = () => {
     const params = new FormData()
     params.append('file', files[0])
     axios
-      .post('/api/upload', params, {
+      .post('http://localhost:3000/api/upload/', params, {
         headers: { 'content-type': 'multipart/form-data' }
       })
       .then((result) => {
-        console.log(result)
+        console.log('upload success', result)
       })
       .catch(() => {
         console.log('upload failed')
