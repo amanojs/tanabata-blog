@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">News</Typography>
+          <Typography variant="h6">タナバタ.Blog</Typography>
         </Toolbar>
       </AppBar>
       <Top />
