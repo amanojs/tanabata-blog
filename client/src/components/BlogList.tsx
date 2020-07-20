@@ -4,7 +4,8 @@ import {
   Paper,
   makeStyles,
   Box,
-  useMediaQuery
+  useMediaQuery,
+  Zoom
 } from '@material-ui/core'
 import { Blog } from '../models/Blog'
 
@@ -34,19 +35,14 @@ export const BlogList: React.FC<OwnProps> = (props) => {
           justifyContent={matches ? 'start' : 'center'}
         >
           {props.blogs.map((item: Blog, index: number) => (
-            <Paper key={index} className={classes.paper}>
-              {item.title}
-            </Paper>
+            <Zoom
+              key={index}
+              in={props.blogs.length ? true : false}
+              style={{ transitionDelay: index * 100 + 'ms' }}
+            >
+              <Paper className={classes.paper}>{item.title}</Paper>
+            </Zoom>
           ))}
-          <Paper
-            className={classes.paper}
-          >{`マッチしているか${matches}`}</Paper>
-          <Paper
-            className={classes.paper}
-            onClick={() => console.log(props.blogs)}
-          >
-            テスト
-          </Paper>
         </Box>
       </Container>
     </React.Fragment>
