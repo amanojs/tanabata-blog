@@ -5,7 +5,7 @@ import { IconButton } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import { Button } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import Top from './pages/Top'
+import Top from './pages/Top/'
 
 const App: React.FC = () => {
   return (
