@@ -2,24 +2,13 @@ import * as React from 'react'
 import { Box, Button } from '@material-ui/core'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
-import axios from 'axios'
 
 interface OwnProps {
   genres: string[]
+  blogs: Blog[]
 }
 
 const TopDesk: React.FC<OwnProps> = (props) => {
-  const [blogs, setBlogs] = React.useState<Blog[]>([])
-  React.useEffect(() => {
-    axios.get('/api/getBlogs/').then((value) => {
-      let pushValue: Blog[] = []
-      Object.keys(value.data.fileMap).forEach((key) => {
-        pushValue = [...pushValue, value.data.fileMap[key]]
-      })
-      setBlogs(pushValue)
-    })
-  }, [])
-
   return (
     <React.Fragment>
       <Box
@@ -56,10 +45,18 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             </Button>
           ))}
         </Box>
+
         <Box>New</Box>
         <Box display="flex">
-          <BlogList blogs={blogs} width="75%" margin="-10px 10px 0 0" />
-          <Box width="24%" height="400px" bgcolor="#fff"></Box>
+          <BlogList blogs={props.blogs} width="72%" margin="-10px 10px 0 0" />
+          <Box
+            width="27%"
+            height="400px"
+            marginBottom="10px"
+            bgcolor="#fff"
+            position="sticky"
+            top="5px"
+          />
         </Box>
       </Box>
     </React.Fragment>
