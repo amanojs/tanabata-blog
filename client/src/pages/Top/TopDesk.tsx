@@ -3,6 +3,7 @@ import { Box, Button } from '@material-ui/core'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
 import { ProfileBox } from '../../components/ProfileBox'
+import history from '../../modules/history'
 
 interface OwnProps {
   genres: string[]
@@ -43,6 +44,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
                 backgroundColor: '#fff',
                 marginRight: (index + 1) % 3 == 0 ? '0px' : '2%'
               }}
+              onClick={() => history.push('/genre?genre=javascript')}
             >
               {item}
             </Button>
