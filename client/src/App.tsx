@@ -17,7 +17,9 @@ const App: React.FC = () => {
           <Typography variant="h6">タナバタ.Blog</Typography>
         </Toolbar>
       </AppBar>
+
       <Top />
+
       <footer style={{ width: '100%' }}>
         <div style={{ height: '400px' }}></div>
         <div style={{ height: '60px', backgroundColor: '#444' }}></div>
