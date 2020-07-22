@@ -35,6 +35,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
         >
           {props.genres.map((item: string, index: number) => (
             <Button
+              key={index}
               style={{
                 width: '32%',
                 height: '40px',

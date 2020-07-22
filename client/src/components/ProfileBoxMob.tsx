@@ -28,7 +28,7 @@ export const ProfileBoxMob: React.FC = () => {
               style={{ maxHeight: '100px', objectFit: 'scale-down' }}
             />
           </Box>
-          <p
+          <div
             style={{
               width: '80%',
               padding: '5px 0 10px 0',
@@ -42,7 +42,7 @@ export const ProfileBoxMob: React.FC = () => {
             <Box width="100%">Amano.js</Box>
             名古屋でフロントエンド開発をしている21才です。TypeScript +
             Reactを使っての開発が得意です。まだまだヒヨッコですが精一杯記事を残していきます。
-          </p>
+          </div>
         </Box>
       </Box>
     </React.Fragment>
