@@ -9,7 +9,7 @@ import Top from './pages/Top/'
 const App: React.FC = () => {
   return (
     <React.Fragment>
-      <AppBar position="static" color="secondary">
+      <AppBar position="static" style={{ backgroundColor: '#444' }}>
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
@@ -18,6 +18,10 @@ const App: React.FC = () => {
         </Toolbar>
       </AppBar>
       <Top />
+      <footer style={{ width: '100%' }}>
+        <div style={{ height: '400px' }}></div>
+        <div style={{ height: '60px', backgroundColor: '#444' }}></div>
+      </footer>
     </React.Fragment>
   )
 }

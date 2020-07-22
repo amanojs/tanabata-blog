@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Box, Button } from '@material-ui/core'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
+import { ProfileBox } from '../../components/ProfileBox'
 
 interface OwnProps {
   genres: string[]
@@ -13,10 +14,10 @@ const TopDesk: React.FC<OwnProps> = (props) => {
     <React.Fragment>
       <Box
         width="100%"
-        maxWidth="1500px"
+        maxWidth="1300px"
         boxSizing="border-box"
         padding="0 20px"
-        margin="0 auto"
+        margin="15px auto"
       >
         <Box
           width="100%"
@@ -46,16 +47,16 @@ const TopDesk: React.FC<OwnProps> = (props) => {
           ))}
         </Box>
 
-        <Box>New</Box>
+        <Box style={{ paddingTop: '30px' }}>New</Box>
         <Box display="flex">
-          <BlogList blogs={props.blogs} width="72%" margin="-10px 10px 0 0" />
-          <Box
-            width="27%"
-            height="400px"
+          <BlogList blogs={props.blogs} width="70%" margin="-10px 25px 0 0" />
+          <ProfileBox
+            width="31%"
+            height="425px"
             marginBottom="10px"
             bgcolor="#fff"
             position="sticky"
-            top="5px"
+            top="10px"
           />
         </Box>
       </Box>

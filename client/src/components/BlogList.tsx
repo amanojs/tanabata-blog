@@ -32,7 +32,7 @@ export const BlogList: React.FC<OwnProps> = (props) => {
             in={props.blogs.length ? true : false}
           >
             <Box className={classes.blog}>
-              <h2 style={{ padding: '20px' }}>{item.title}</h2>
+              <h2 style={{ padding: '20px', color: '#555' }}>{item.title}</h2>
               <img
                 src="https://i.pinimg.com/originals/cb/ae/1a/cbae1acb1b710a97141a556bb91274a0.jpg"
                 width="100%"

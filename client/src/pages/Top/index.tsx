@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Blog } from '../../models/Blog'
 
 const Top: React.FC = () => {
-  const genres: string[] = ['JavaScript', 'Flutter', 'PHP']
+  const genres: string[] = ['JavaScript', 'React', 'Vue.js', 'Flutter', 'PHP']
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   React.useEffect(() => {
     axios.get('/api/getBlogs/').then((value) => {
@@ -20,11 +20,11 @@ const Top: React.FC = () => {
   }, [])
   return (
     <React.Fragment>
-      <Box bgcolor="#eee" width="100%" minHeight="100vh" paddingTop="20px">
-        <MediaQuery query="(min-width: 750px)">
+      <Box bgcolor="#eee" width="100%" minHeight="100vh" padding="20px 0">
+        <MediaQuery query="(min-width: 900px)">
           <TopDesk blogs={blogs} genres={genres} />
         </MediaQuery>
-        <MediaQuery query="(max-width: 749px)">
+        <MediaQuery query="(max-width: 899px)">
           <TopMob blogs={blogs} />
         </MediaQuery>
       </Box>
