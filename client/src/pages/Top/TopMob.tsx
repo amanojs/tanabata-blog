@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Blog } from '../../models/Blog'
 import { Box } from '@material-ui/core'
 import { BlogListMob } from '../../components/BlogListMob'
+import { ProfileBoxMob } from '../../components/ProfileBoxMob'
 
 interface OwnProps {
   blogs: Blog[]
@@ -17,6 +18,7 @@ const TopMob: React.FC<OwnProps> = (props) => {
         padding="0 20px"
         margin="0 auto"
       >
+        <ProfileBoxMob />
         <Box>New</Box>
         <Box>
           <BlogListMob

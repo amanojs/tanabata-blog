@@ -31,6 +31,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             backgroundSize: 'cover',
             backgroundPosition: 'bottom'
           }}
+          borderRadius="2px"
         >
           {props.genres.map((item: string, index: number) => (
             <Button

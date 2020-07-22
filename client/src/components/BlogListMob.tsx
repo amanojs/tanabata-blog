@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { makeStyles, Box, Slide, Zoom } from '@material-ui/core'
+import { makeStyles, Box, Slide, Paper } from '@material-ui/core'
 import { Blog } from '../models/Blog'
 
 interface OwnProps {
@@ -31,7 +31,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
             key={index}
             in={props.blogs.length ? true : false}
           >
-            <Box className={classes.blog}>
+            <Paper className={classes.blog}>
               <h2 style={{ padding: '20px', fontSize: '90%' }}>{item.title}</h2>
               <img
                 src="https://i.pinimg.com/originals/cb/ae/1a/cbae1acb1b710a97141a556bb91274a0.jpg"
@@ -48,7 +48,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
               >
                 {item.preview && item.preview.substr(0, 50) + '...'}
               </p>
-            </Box>
+            </Paper>
           </Slide>
         ))}
       </Box>
