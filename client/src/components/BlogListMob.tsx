@@ -34,7 +34,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
             <Paper className={classes.blog}>
               <h2 style={{ padding: '20px', fontSize: '90%' }}>{item.title}</h2>
               <img
-                src="https://i.pinimg.com/originals/cb/ae/1a/cbae1acb1b710a97141a556bb91274a0.jpg"
+                src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
                 width="100%"
                 height="350px"
                 alt="blog img"
