@@ -1,4 +1,5 @@
 import * as React from 'react'
+import history from '../modules/history'
 import { makeStyles, Box, Slide, Paper } from '@material-ui/core'
 import { Blog } from '../models/Blog'
 
@@ -31,7 +32,10 @@ export const BlogList: React.FC<OwnProps> = (props) => {
             key={index}
             in={props.blogs.length ? true : false}
           >
-            <Paper className={classes.blog}>
+            <Paper
+              className={classes.blog}
+              onClick={() => history.push(`/blog?title=${item.title}`)}
+            >
               <h2 style={{ padding: '20px', color: '#555', fontSize: '115%' }}>
                 {item.title}
               </h2>

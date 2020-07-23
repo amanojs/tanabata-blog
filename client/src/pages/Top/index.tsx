@@ -1,9 +1,8 @@
 import * as React from 'react'
-import MediaQuery from 'react-responsive'
-import { Box } from '@material-ui/core'
+import { DeskTop, Mobile } from '../../modules/mediaqueries'
+import axios from 'axios'
 import TopDesk from './TopDesk'
 import TopMob from './TopMob'
-import axios from 'axios'
 import { Blog } from '../../models/Blog'
 
 const Top: React.FC = () => {
@@ -20,14 +19,12 @@ const Top: React.FC = () => {
   }, [])
   return (
     <React.Fragment>
-      <Box bgcolor="#eee" width="100%" minHeight="100vh" padding="20px 0">
-        <MediaQuery query="(min-width: 900px)">
-          <TopDesk blogs={blogs} genres={genres} />
-        </MediaQuery>
-        <MediaQuery query="(max-width: 899px)">
-          <TopMob blogs={blogs} />
-        </MediaQuery>
-      </Box>
+      <DeskTop>
+        <TopDesk blogs={blogs} genres={genres} />
+      </DeskTop>
+      <Mobile>
+        <TopMob blogs={blogs} />
+      </Mobile>
     </React.Fragment>
   )
 }
