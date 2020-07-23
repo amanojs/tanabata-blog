@@ -15,7 +15,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
     <React.Fragment>
       <Box
         width="100%"
-        maxWidth="1300px"
+        maxWidth="1500px"
         boxSizing="border-box"
         padding="0 20px"
         margin="15px auto"

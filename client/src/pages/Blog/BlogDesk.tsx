@@ -1,12 +1,19 @@
 import * as React from 'react'
-import { Box, Paper, IconButton } from '@material-ui/core'
+import { BlogDetail } from '../../models/BlogDetail'
+import { Box, IconButton } from '@material-ui/core'
 import histroy from '../../modules/history'
 import MenuIcon from '@material-ui/icons/ArrowLeftOutlined'
+import { BlogPaper } from '../../components/BlogPaper'
 
-const BlogDesk: React.FC = (props) => {
+interface Props {
+  blogDetail: BlogDetail
+}
+
+const BlogDesk: React.FC<Props> = (props) => {
   return (
     <Box
       display="flex"
+      alignItems="start"
       width="100%"
       maxWidth="1500px"
       margin="0 auto"
@@ -14,6 +21,8 @@ const BlogDesk: React.FC = (props) => {
       boxSizing="border-box"
     >
       <Box
+        position="sticky"
+        top="0"
         display="flex"
         justifyContent="center"
         alignItems="flex-start"
@@ -32,17 +41,10 @@ const BlogDesk: React.FC = (props) => {
           <MenuIcon />
         </IconButton>
       </Box>
-      <Paper
-        style={{
-          width: '100%',
-          minHeight: '90vh',
-          padding: '50px 50px',
-          boxSizing: 'border-box'
-        }}
-      >
-        2020年7月27日
-      </Paper>
-      <Box width="100px" padding="0 0 0 20px">
+
+      <BlogPaper blogDetail={props.blogDetail} padding="50px 50px" />
+
+      <Box width="100px" padding="0 0 0 20px" position="sticky" top="20px">
         <ul style={{ listStyle: 'none', overflow: 'hidden' }}>
           <li>adfassssssssssssssssasdfasfasfafsfds</li>
           <li>asfasf</li>
