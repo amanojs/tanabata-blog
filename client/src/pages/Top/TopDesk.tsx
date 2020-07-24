@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { Box, Button } from '@material-ui/core'
+import { Box, Button, LinearProgress } from '@material-ui/core'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
 import { ProfileBox } from '../../components/ProfileBox'
 import history from '../../modules/history'
 
 interface OwnProps {
+  isLoading: boolean
   genres: string[]
   blogs: Blog[]
 }
@@ -15,7 +16,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
     <React.Fragment>
       <Box
         width="100%"
-        maxWidth="1500px"
+        className="TopContainer"
         boxSizing="border-box"
         padding="0 20px"
         margin="15px auto"
@@ -44,16 +45,26 @@ const TopDesk: React.FC<OwnProps> = (props) => {
                 backgroundColor: '#fff',
                 marginRight: (index + 1) % 3 == 0 ? '0px' : '2%'
               }}
-              onClick={() => history.push('/genre?genre=javascript')}
+              onClick={() => history.push(`/?genre=${item}`)}
             >
               {item}
             </Button>
           ))}
         </Box>
 
-        <Box style={{ paddingTop: '30px' }}>New</Box>
+        <Box style={{ paddingTop: '30px' }}>
+          カテゴリ:
+          {new URLSearchParams(window.location.search).get('genre') ||
+            '最新の記事'}
+        </Box>
         <Box display="flex">
-          <BlogList blogs={props.blogs} width="70%" margin="-10px 25px 0 0" />
+          {props.isLoading ? (
+            <LinearProgress
+              style={{ width: '70%', margin: '-10px 25px 0 0' }}
+            />
+          ) : (
+            <BlogList blogs={props.blogs} width="70%" margin="-10px 25px 0 0" />
+          )}
           <ProfileBox
             width="31%"
             height="425px"
@@ -64,6 +75,19 @@ const TopDesk: React.FC<OwnProps> = (props) => {
           />
         </Box>
       </Box>
+
+      <style jsx>{`
+        @media screen and (min-width: 1501px) {
+          .TopContainer {
+            max-width: 1500px;
+          }
+        }
+        @media screen and (max-width: 1500px) {
+          .TopContainer {
+            max-width: 1200px;
+          }
+        }
+      `}</style>
     </React.Fragment>
   )
 }

@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Blog } from '../../models/Blog'
-import { Box } from '@material-ui/core'
+import { Box, LinearProgress } from '@material-ui/core'
 import { BlogListMob } from '../../components/BlogListMob'
 import { ProfileBoxMob } from '../../components/ProfileBoxMob'
 
 interface OwnProps {
+  isLoading: boolean
   blogs: Blog[]
 }
 
@@ -19,13 +20,21 @@ const TopMob: React.FC<OwnProps> = (props) => {
         margin="0 auto"
       >
         <ProfileBoxMob />
-        <Box>New</Box>
         <Box>
-          <BlogListMob
-            blogs={props.blogs}
-            width="100%"
-            margin="-10px 10px 0 0"
-          />
+          カテゴリ:
+          {new URLSearchParams(window.location.search).get('genre') ||
+            '最新の記事'}
+        </Box>
+        <Box>
+          {props.isLoading ? (
+            <LinearProgress />
+          ) : (
+            <BlogListMob
+              blogs={props.blogs}
+              width="100%"
+              margin="-10px 10px 0 0"
+            />
+          )}
         </Box>
       </Box>
     </React.Fragment>

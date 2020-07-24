@@ -6,24 +6,37 @@ import TopMob from './TopMob'
 import { Blog } from '../../models/Blog'
 
 const Top: React.FC = () => {
-  const genres: string[] = ['JavaScript', 'React', 'Vue.js', 'Flutter', 'PHP']
+  const genres: string[] = ['JavaScript', 'React', 'その他']
   const [blogs, setBlogs] = React.useState<Blog[]>([])
+  const [isLoading, setLoading] = React.useState<boolean>(false)
+  const [genre, setGenre] = React.useState<string>('')
+  const params = new URLSearchParams(window.location.search)
+  if (params.get('genre') !== genre) {
+    setGenre(params.get('genre'))
+  }
   React.useEffect(() => {
-    axios.get('/api/getBlogs/').then((value) => {
-      let pushValue: Blog[] = []
-      Object.keys(value.data.fileMap).forEach((key) => {
-        pushValue = [...pushValue, value.data.fileMap[key]]
+    setLoading(true)
+    if (genre) {
+      axios
+        .get('/api/getBlogs/', { params: { genre: params.get('genre') } })
+        .then((value) => {
+          setBlogs(value.data)
+          setLoading(false)
+        })
+    } else {
+      axios.get('/api/getBlogs/').then((value) => {
+        setBlogs(value.data)
+        setLoading(false)
       })
-      setBlogs(pushValue)
-    })
-  }, [])
+    }
+  }, [genre])
   return (
     <React.Fragment>
       <DeskTop>
-        <TopDesk blogs={blogs} genres={genres} />
+        <TopDesk isLoading={isLoading} blogs={blogs} genres={genres} />
       </DeskTop>
       <Mobile>
-        <TopMob blogs={blogs} />
+        <TopMob isLoading={isLoading} blogs={blogs} />
       </Mobile>
     </React.Fragment>
   )

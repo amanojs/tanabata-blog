@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import multer from 'multer'
 import cors from 'cors'
+import fs from 'fs'
 
 const app = express()
 app.use(cors())
@@ -42,7 +43,21 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/getBlogs/', (req, res) => {
-  res.sendFile(path.join('./', 'blogs', 'summary.json'), { root: '.' })
+  const summary = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8'))
+  console.log('param', req.query.genre)
+  let blogs = []
+  Object.keys(summary.fileMap).forEach((key) => {
+    blogs = [...blogs, summary.fileMap[key]]
+  })
+  if (!req.query.genre) return res.send(blogs)
+  let genreBlogs = []
+  for (let blog of blogs) {
+    console.log(blog.tags)
+    if (blog.tags == req.query.genre) genreBlogs = [...genreBlogs, blog]
+  }
+  console.log(genreBlogs)
+  return res.send(genreBlogs)
+  //res.sendFile(path.join('./', 'blogs', 'summary.json'), { root: '.' })
 })
 
 app.get('/api/getBlog/', (req, res) => {
