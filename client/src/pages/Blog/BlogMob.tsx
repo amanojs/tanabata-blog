@@ -9,7 +9,7 @@ interface Props {
 
 const BlogMob: React.FC<Props> = (props) => {
   return (
-    <Box boxSizing="border-box">
+    <Box boxSizing="border-box" marginTop="-20px">
       <BlogPaper blogDetail={props.blogDetail} padding="15px"></BlogPaper>
     </Box>
   )

@@ -11,7 +11,7 @@ interface Props {
 export const Markdown: React.FC<Props> = (props) => {
   if (props.markdown.length > 0) {
     return (
-      <div className="markdown">
+      <div className="markdown" id="markdown">
         <Fade in={props.markdown.length > 0}>
           <ReactMarkdown
             source={props.markdown}
@@ -29,11 +29,11 @@ export const Markdown: React.FC<Props> = (props) => {
           .markdown h2 {
             box-sizing: border-box;
             padding: 10px;
-            margin: 80px 0 20px 0;
+            margin: 80px 0 25px 0;
           }
           .markdown h2 {
             font-size: 30px;
-            border: 5px solid #eee;
+            border: 5px solid #4bb543;
             border-width: 0 0 2px 30px;
           }
           .markdown p {
@@ -48,6 +48,15 @@ export const Markdown: React.FC<Props> = (props) => {
             border-radius: 3px;
             font-weight: bold;
           }
+          .markdown blockquote {
+            border: 1px solid #eee;
+            border-width: 0 0 0 10px;
+            padding: 20px 0 20px 30px;
+          }
+          .markdown blockquote p {
+            color: #555;
+            padding-bottom: 5px;
+          }
 
           @media screen and (max-width: 600px) {
             .markdown h1 {
@@ -58,8 +67,8 @@ export const Markdown: React.FC<Props> = (props) => {
               padding: 10px;
               margin: 50px 0 20px 0;
               font-size: 20px;
-              border: 5px solid #eee;
-              border-width: 0 0 2px 5px;
+              border: 5px solid #4bb543;
+              border-width: 0 0 2px 10px;
             }
             .markdown p {
               font-size: 16px;
@@ -71,6 +80,12 @@ export const Markdown: React.FC<Props> = (props) => {
               padding: 2.5px 5px;
               background-color: #eee;
               border-radius: 3px;
+            }
+            .markdown blockquote {
+              padding: 10px 0 10px 10px;
+            }
+            .markdown blockquote p {
+              padding-bottom: 5px;
             }
           }
         `}</style>

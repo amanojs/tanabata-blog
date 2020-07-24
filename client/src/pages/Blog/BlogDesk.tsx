@@ -7,16 +7,35 @@ import { BlogPaper } from '../../components/BlogPaper'
 
 interface Props {
   blogDetail: BlogDetail
+  isLoading: boolean
 }
 
 const BlogDesk: React.FC<Props> = (props) => {
+  let items = []
+  if (!props.isLoading) {
+    let markdown = document.getElementById('markdown')
+    const collections = markdown.getElementsByTagName('h2')
+    for (let i = 0; collections.length > i; i++) {
+      items.push(collections[i].innerText)
+    }
+  }
+
+  const scrollItem = (index: number) => {
+    const rect = document
+      .getElementById('markdown')
+      .getElementsByTagName('h2')
+      [index].getBoundingClientRect()
+    console.log(rect.top)
+    window.scrollBy({ left: 0, top: rect.top - 50, behavior: 'smooth' })
+  }
+
   return (
     <Box
       display="flex"
       alignItems="start"
       width="100%"
       maxWidth="1500px"
-      margin="0 auto"
+      margin="30px auto"
       padding="0 20px"
       boxSizing="border-box"
     >
@@ -44,12 +63,28 @@ const BlogDesk: React.FC<Props> = (props) => {
 
       <BlogPaper blogDetail={props.blogDetail} padding="50px 50px" />
 
-      <Box width="100px" padding="0 0 0 20px" position="sticky" top="20px">
+      <Box width="200px" padding="0 0 0 20px" position="sticky" top="20px">
         <ul style={{ listStyle: 'none', overflow: 'hidden' }}>
-          <li>adfassssssssssssssssasdfasfasfafsfds</li>
-          <li>asfasf</li>
+          {items.map((item, index) => (
+            <li key={item} onClick={() => scrollItem(index)} className="items">
+              {item}
+            </li>
+          ))}
         </ul>
       </Box>
+      <style jsx>{`
+        .items {
+          color: #666;
+          cursor: pointer;
+          transition: 0.2s;
+          border-radius: 2px;
+          padding: 5px 3px;
+        }
+        .items:hover {
+          background-color: #f5f5f5;
+          color: #444;
+        }
+      `}</style>
     </Box>
   )
 }

@@ -8,20 +8,23 @@ import BlogMob from './BlogMob'
 
 const BlogPage: React.FC = () => {
   const [blogDetail, setBlog] = React.useState<BlogDetail>()
+  const [isLoading, setLoading] = React.useState<boolean>(true)
   const params = new URLSearchParams(window.location.search)
   const title = params.get('title').toString()
 
   React.useEffect(() => {
+    window.scroll({ left: 0, top: 0 })
     axios.get('/api/getBlog/', { params: { title: title } }).then((value) => {
       console.log(value)
       setBlog(value.data)
+      setLoading(false)
     })
   }, [])
 
   return (
     <React.Fragment>
       <DeskTop>
-        <BlogDesk blogDetail={blogDetail} />
+        <BlogDesk blogDetail={blogDetail} isLoading={isLoading} />
       </DeskTop>
       <Mobile>
         <BlogMob blogDetail={blogDetail} />

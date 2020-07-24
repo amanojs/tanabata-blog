@@ -1,4 +1,5 @@
 import * as React from 'react'
+import history from '../modules/history'
 import { makeStyles, Box, Slide, Paper } from '@material-ui/core'
 import { Blog } from '../models/Blog'
 
@@ -31,7 +32,10 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
             key={index}
             in={props.blogs.length ? true : false}
           >
-            <Paper className={classes.blog}>
+            <Paper
+              className={classes.blog}
+              onClick={() => history.push(`/blog?title=${item.title}`)}
+            >
               <h2 style={{ padding: '20px', fontSize: '90%' }}>{item.title}</h2>
               <img
                 src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
