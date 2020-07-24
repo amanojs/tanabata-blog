@@ -15,7 +15,7 @@ export const Markdown: React.FC<Props> = (props) => {
         <Fade in={props.markdown.length > 0}>
           <ReactMarkdown
             source={props.markdown}
-            renderers={{ code: CodeBlock }}
+            renderers={{ code: CodeBlock, image: ImgBlock }}
           ></ReactMarkdown>
         </Fade>
         <style jsx={true}>{`
@@ -56,6 +56,14 @@ export const Markdown: React.FC<Props> = (props) => {
           .markdown blockquote p {
             color: #555;
             padding-bottom: 5px;
+          }
+          .markdown ul,
+          ol {
+            list-style-position: inside;
+          }
+          .markdown li {
+            padding-bottom: 5px;
+            padding-left: 10px;
           }
           @media screen and (max-width: 600px) {
             .markdown h1 {
@@ -111,17 +119,25 @@ const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
         code {
           font-size: 20px;
         }
-        @media screen and (max-width: 1400px) {
+        @media screen and (max-width: 1500px) {
           code {
-            font-size: 16px;
-          }
-        }
-        @media screen and (max-width: 600px) {
-          code {
-            font-size: 15px;
+            font-size: 14.5px;
           }
         }
       `}</style>
+    </React.Fragment>
+  )
+}
+
+interface ImgProps {
+  src: string
+}
+
+const ImgBlock: React.FC<ImgProps> = (props) => {
+  console.log('呼ばれた？', props)
+  return (
+    <React.Fragment>
+      <img src={props.src} style={{ objectFit: 'cover', maxWidth: '100%' }} />
     </React.Fragment>
   )
 }
