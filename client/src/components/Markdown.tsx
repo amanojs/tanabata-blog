@@ -21,7 +21,7 @@ export const Markdown: React.FC<Props> = (props) => {
         <style jsx={true}>{`
           .markdown {
             min-width: 200px;
-            font-size: 20px;
+            font-size: 16px;
           }
           .markdown h1 {
             font-size: 40px;
@@ -32,12 +32,12 @@ export const Markdown: React.FC<Props> = (props) => {
             margin: 80px 0 25px 0;
           }
           .markdown h2 {
-            font-size: 30px;
+            font-size: 28px;
             border: 5px solid #4bb543;
             border-width: 0 0 2px 30px;
           }
           .markdown p {
-            font-size: 20px;
+            font-size: 16px;
             padding-bottom: 13px;
             line-height: 30px;
             color: #444;
@@ -109,6 +109,9 @@ const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
       </SyntaxHighlighter>
 
       <style jsx={true}>{`
+        code {
+          font-size: 14.4px;
+        }
         @media screen and (max-width: 600px) {
           code {
             font-size: 15px;
