@@ -93,7 +93,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             </IconButton>
           </Box>
         </Box>
-        <Box display="flex">
+        <Box display="flex" minHeight="90vh">
           {props.isLoading ? (
             <LinearProgress
               style={{ width: '70%', margin: '-10px 25px 0 0' }}
