@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Box, Button, LinearProgress } from '@material-ui/core'
+import { Box, Button, LinearProgress, IconButton } from '@material-ui/core'
+import { CallToAction, ViewList } from '@material-ui/icons'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
 import { ProfileBox } from '../../components/ProfileBox'
@@ -9,6 +10,8 @@ interface OwnProps {
   isLoading: boolean
   genres: string[]
   blogs: Blog[]
+  dispType: number
+  setDispType(i: number): void
 }
 
 const TopDesk: React.FC<OwnProps> = (props) => {
@@ -52,10 +55,43 @@ const TopDesk: React.FC<OwnProps> = (props) => {
           ))}
         </Box>
 
-        <Box style={{ paddingTop: '30px' }}>
-          カテゴリ:
-          {new URLSearchParams(window.location.search).get('genre') ||
-            '最新の記事'}
+        <Box display="flex" style={{ paddingTop: '30px' }}>
+          <Box className="categorybox" width="40%">
+            カテゴリ:
+            {new URLSearchParams(window.location.search).get('genre') ||
+              '最新の記事'}
+          </Box>
+          <Box
+            className="disptype-contoroller"
+            display="flex"
+            justifyContent="flex-end"
+            alignItems="center"
+            width="27.8%"
+          >
+            <p>表示形式:</p>
+            <IconButton
+              edge="start"
+              color={props.dispType === 0 ? 'primary' : 'inherit'}
+              aria-label="menu"
+              style={{ display: 'block', marginLeft: 0 }}
+              onClick={() => {
+                props.setDispType(0)
+              }}
+            >
+              <CallToAction fontSize="small" />
+            </IconButton>
+            <IconButton
+              edge="start"
+              color={props.dispType === 1 ? 'primary' : 'inherit'}
+              aria-label="menu"
+              style={{ display: 'block', marginLeft: 0 }}
+              onClick={() => {
+                props.setDispType(1)
+              }}
+            >
+              <ViewList />
+            </IconButton>
+          </Box>
         </Box>
         <Box display="flex">
           {props.isLoading ? (
@@ -63,7 +99,12 @@ const TopDesk: React.FC<OwnProps> = (props) => {
               style={{ width: '70%', margin: '-10px 25px 0 0' }}
             />
           ) : (
-            <BlogList blogs={props.blogs} width="70%" margin="-10px 25px 0 0" />
+            <BlogList
+              blogs={props.blogs}
+              dispType={props.dispType}
+              width="70%"
+              margin="-10px 25px 0 0"
+            />
           )}
           <ProfileBox
             width="31%"

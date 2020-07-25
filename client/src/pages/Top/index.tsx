@@ -10,7 +10,7 @@ const Top: React.FC = () => {
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
   const [genre, setGenre] = React.useState<string>('')
-  const [dispStyle, setStyle] = React.useState<number>(0)
+  const [dispType, setDispType] = React.useState<number>(0)
   const params = new URLSearchParams(window.location.search)
   if (params.get('genre') !== genre) {
     setGenre(params.get('genre'))
@@ -35,10 +35,21 @@ const Top: React.FC = () => {
   return (
     <React.Fragment>
       <DeskTop>
-        <TopDesk isLoading={isLoading} blogs={blogs} genres={genres} />
+        <TopDesk
+          isLoading={isLoading}
+          blogs={blogs}
+          genres={genres}
+          dispType={dispType}
+          setDispType={setDispType}
+        />
       </DeskTop>
       <Mobile>
-        <TopMob isLoading={isLoading} blogs={blogs} />
+        <TopMob
+          isLoading={isLoading}
+          blogs={blogs}
+          dispType={dispType}
+          setDispType={setDispType}
+        />
       </Mobile>
     </React.Fragment>
   )

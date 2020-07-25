@@ -7,6 +7,7 @@ interface OwnProps {
   blogs: Blog[]
   width: string
   margin: string
+  dispType: number
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -34,24 +35,67 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
           >
             <Paper
               className={classes.blog}
+              style={{
+                display: props.dispType === 0 ? 'block' : 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'start',
+                height: props.dispType === 0 ? '550px' : 'auto',
+                minHeight: '70px'
+              }}
               onClick={() => history.push(`/blog?title=${item.title}`)}
             >
-              <h2 style={{ padding: '20px', fontSize: '90%' }}>{item.title}</h2>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
-                width="100%"
-                height="350px"
-                alt="blog img"
-                style={{ objectFit: 'cover' }}
-              />
-              <p
-                style={{
-                  color: '#666',
-                  padding: '5% 10% 0 10%'
-                }}
-              >
-                {item.preview && item.preview.substr(0, 50) + '...'}
-              </p>
+              {props.dispType === 0 ? (
+                <React.Fragment>
+                  <h2 style={{ padding: '20px', fontSize: '90%' }}>
+                    {item.title}
+                  </h2>
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
+                    width="100%"
+                    height="350px"
+                    alt="blog img"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <p
+                    style={{
+                      color: '#666',
+                      padding: '5% 10% 0 10%'
+                    }}
+                  >
+                    {item.preview && item.preview.substr(0, 50) + '...'}
+                  </p>
+                </React.Fragment>
+              ) : (
+                false
+              )}
+
+              {props.dispType === 1 ? (
+                <React.Fragment>
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
+                    width="20%"
+                    height="70px"
+                    alt="blog img"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <Box width="80%">
+                    <h2
+                      style={{
+                        color: '#555',
+                        fontSize: '75%',
+                        overflow: 'hidden',
+                        height: '70px',
+                        padding: '10px',
+                        boxSizing: 'border-box'
+                      }}
+                    >
+                      {item.title}
+                    </h2>
+                  </Box>
+                </React.Fragment>
+              ) : (
+                false
+              )}
             </Paper>
           </Slide>
         ))}
