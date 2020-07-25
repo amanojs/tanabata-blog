@@ -16,21 +16,22 @@ const Top: React.FC = () => {
     setGenre(params.get('genre'))
   }
   React.useEffect(() => {
+    getAllBlog()
+  }, [genre])
+
+  const getAllBlog = async () => {
     setLoading(true)
-    if (genre) {
-      axios
-        .get('/api/getBlogs/', { params: { genre: params.get('genre') } })
-        .then((value) => {
-          setBlogs(value.data)
-          setLoading(false)
-        })
+    let result
+    if (!genre) {
+      result = await axios.get('/api/getBlogs/')
     } else {
-      axios.get('/api/getBlogs/').then((value) => {
-        setBlogs(value.data)
-        setLoading(false)
+      result = await axios.get('/api/getBlogs/', {
+        params: { genre: params.get('genre') }
       })
     }
-  }, [genre])
+    setBlogs(result.data)
+    setLoading(false)
+  }
   return (
     <React.Fragment>
       <DeskTop>
