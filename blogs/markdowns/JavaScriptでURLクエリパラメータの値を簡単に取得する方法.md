@@ -18,7 +18,7 @@ React で SPA をつくっているとき URL クエリパラメータの値を�
 
 ## 実際のコード
 
-```tsx
+```javascript
 const params = new URLSearchParams(window.location.search)
 const value = params.get('key名') // key名の値
 ```

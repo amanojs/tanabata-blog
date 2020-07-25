@@ -6,10 +6,11 @@ import TopMob from './TopMob'
 import { Blog } from '../../models/Blog'
 
 const Top: React.FC = () => {
-  const genres: string[] = ['JavaScript', 'React', 'その他']
+  const genres: string[] = ['JavaScript', 'React', 'Other']
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
   const [genre, setGenre] = React.useState<string>('')
+  const [dispStyle, setStyle] = React.useState<number>(0)
   const params = new URLSearchParams(window.location.search)
   if (params.get('genre') !== genre) {
     setGenre(params.get('genre'))
