@@ -3,9 +3,14 @@ import path from 'path'
 import multer from 'multer'
 import cors from 'cors'
 import fs from 'fs'
+const ejs = require('ejs');
 
 const app = express()
 app.use(cors())
+app.engine('ejs', ejs.renderFile);
+app.set('view engine', 'ejs');
+
+const URL = 'http://localhost:3000'
 
 app.use(
   '/index.bundle.js',
@@ -23,7 +28,6 @@ const upload = multer({ storage: storage })
 app.post('/api/upload/', upload.single('file'), (req, res) => {
   const { execSync } = require('child_process')
   execSync('npm run md')
-
   res.json({ result: 'upload success.' })
 })
 
@@ -42,9 +46,18 @@ app.get('/api', (req, res) => {
   )
 })
 
+app.get('/sitemap.xml', (req, res) => {
+  const summary = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8'))
+  let urls = []
+  Object.keys(summary.fileMap).forEach((key) => {
+    urls = [...urls, URL + '/blog?title=' + summary.fileMap[key].title]
+  })
+  res.setHeader('Content-Type', 'text/xml');
+  res.render('sitemap_base', { URL: URL, urls: urls })
+})
+
 app.get('/api/getBlogs/', (req, res) => {
   const summary = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8'))
-  console.log('param', req.query.genre)
   let blogs = []
   Object.keys(summary.fileMap).forEach((key) => {
     blogs = [...blogs, summary.fileMap[key]]
@@ -55,7 +68,6 @@ app.get('/api/getBlogs/', (req, res) => {
     console.log(blog.tags)
     if (blog.tags == req.query.genre) genreBlogs = [...genreBlogs, blog]
   }
-  console.log(genreBlogs)
   return res.send(genreBlogs)
   //res.sendFile(path.join('./', 'blogs', 'summary.json'), { root: '.' })
 })
