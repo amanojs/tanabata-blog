@@ -39,8 +39,19 @@ const App: React.FC = () => {
         </Box>
 
         <footer style={{ width: '100%' }}>
-          <div style={{ height: '400px' }}></div>
-          <div style={{ height: '60px', backgroundColor: '#444' }}></div>
+          {/* <div style={{ height: '400px' }}></div> */}
+          <div
+            style={{
+              height: '60px',
+              backgroundColor: '#444',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              color: '#fff'
+            }}
+          >
+            <small>&copy;{new Date().getFullYear()} Nagoya Amano.js</small>
+          </div>
         </footer>
       </Router>
     </React.Fragment>

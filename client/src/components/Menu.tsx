@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { Slide } from '@material-ui/core'
+import { Slide, Fade, IconButton } from '@material-ui/core'
 import GENRES from '../models/GENRES'
+import { Close } from '@material-ui/icons'
+import histroy from '../modules/history'
 
 interface Props {
   setMenuFlag(v: boolean): void
@@ -9,16 +11,48 @@ interface Props {
 export const Menu: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
-      <div className="carvon" onClick={() => props.setMenuFlag(false)}>
-        <Slide direction="down" in={true}>
-          <div className="menu">
-            <h2>Menu</h2>
-            <div>
-              <ul>{...GENRES.map((genre) => <li>{genre}</li>)}</ul>
-            </div>
+      <Fade in={true}>
+        <div className="menu">
+          <h2>Menu</h2>
+          <div className="menulist" style={{ overflowY: 'scroll' }}>
+            <ul className="list">
+              {...GENRES.map((genre, index) => (
+                <Slide
+                  direction="right"
+                  in={true}
+                  timeout={(index + 1) * 100}
+                  key={index}
+                >
+                  <li
+                    className="menulists"
+                    onClick={() => {
+                      histroy.push(`/?genre=${genre}`)
+                      props.setMenuFlag(false)
+                    }}
+                  >
+                    {genre}
+                  </li>
+                </Slide>
+              ))}
+            </ul>
           </div>
-        </Slide>
-      </div>
+          <IconButton
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              marginRight: '30px'
+            }}
+            color="secondary"
+            onClick={() => props.setMenuFlag(false)}
+          >
+            <Close fontSize="large" />
+          </IconButton>
+        </div>
+      </Fade>
+
+      <div className="carvon" onClick={() => props.setMenuFlag(false)}></div>
       <style jsx>{`
         .carvon {
           display: flex;
@@ -28,15 +62,50 @@ export const Menu: React.FC<Props> = (props) => {
           top: 0;
           width: 100%;
           height: 100vh;
-          background-color: rgba(0, 0, 0, 0.5);
           z-index: 10;
+          background-color: rgba(0, 0, 0, 0.5);
           transition: 0.5s;
         }
         .menu {
-          width: 400px;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%) translateZ(0);
+          -webkit- transform: translateY(-50%) translateX(-50%) translateZ(0);
+          margin: auto;
+          width: 500px;
           height: 600px;
           background-color: #fff;
+          border-radius: 2px;
+          box-sizing: border-box;
+          padding: 20px 30px;
           z-index: 20;
+        }
+        .menulist{    
+          height: 400px;
+          transform: translateZ(0);
+          padding: 20px 0;
+        }
+        .menulists{
+            list-style: none;
+            color: #111;
+            padding: 20px 5px;
+            border-bottom: 2px solid #eee;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 500px) {
+          .menu {
+            width: 100%;
+            height: 100vh;
+            border-radius: 0;
+            padding: 20px 30px;
+          }
+          .menulist{    
+            height: 70vh;
+            transform: translateZ(0);
+            padding: 20px 0;
+          }
         }
       `}</style>
     </React.Fragment>
