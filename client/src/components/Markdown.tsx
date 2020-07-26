@@ -1,7 +1,7 @@
 import * as React from 'react'
 const ReactMarkdown = require('react-markdown')
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { tomorrow as codestyle } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import codestyle from 'react-syntax-highlighter/dist/esm/styles/prism/tomorrow'
 import { Fade } from '@material-ui/core'
 
 interface Props {

@@ -18,22 +18,50 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|react-syntax-highlighter)/,
         use: {
           loader: 'ts-loader'
         }
       },
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|react-syntax-highlighter)/,
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.css/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              url: false
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+              importLoaders: 2
+            }
+          },
+          {
+            loader: "sass-loader"
+          }
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [htmlWebpackPlugin]
 }
