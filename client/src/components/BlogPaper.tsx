@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { BlogDetail } from '../models/BlogDetail'
 import { Paper, LinearProgress } from '@material-ui/core'
-import { Markdown } from './MarkDown'
+import { Markdown } from './Markdown'
 
 interface Props {
   blogDetail: BlogDetail
