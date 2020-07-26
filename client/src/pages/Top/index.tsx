@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { DeskTop, Mobile } from '../../modules/mediaqueries'
 import axios from 'axios'
-import TopDesk from './TopDesk'
-import TopMob from './TopMob'
+const TopDesk = React.lazy(() => import('./TopDesk'))
+const TopMob = React.lazy(() => import('./TopMob'))
 import { Blog } from '../../models/Blog'
 import genres from '../../models/GENRES'
 
@@ -34,23 +34,25 @@ const Top: React.FC = () => {
   }
   return (
     <React.Fragment>
-      <DeskTop>
-        <TopDesk
-          isLoading={isLoading}
-          blogs={blogs}
-          genres={genres}
-          dispType={dispType}
-          setDispType={setDispType}
-        />
-      </DeskTop>
-      <Mobile>
-        <TopMob
-          isLoading={isLoading}
-          blogs={blogs}
-          dispType={dispType}
-          setDispType={setDispType}
-        />
-      </Mobile>
+      <React.Suspense fallback={<div>loading</div>}>
+        <DeskTop>
+          <TopDesk
+            isLoading={isLoading}
+            blogs={blogs}
+            genres={genres}
+            dispType={dispType}
+            setDispType={setDispType}
+          />
+        </DeskTop>
+        <Mobile>
+          <TopMob
+            isLoading={isLoading}
+            blogs={blogs}
+            dispType={dispType}
+            setDispType={setDispType}
+          />
+        </Mobile>
+      </React.Suspense>
     </React.Fragment>
   )
 }
