@@ -11,7 +11,7 @@ created_at: '2020-07-23 19:45:56'
 React の state hook で配列を定義していて、更新したいと思いセッターに値を渡すと中身は更新されているのにコンポーネントが再レンダリングされない事案にぶち当たりました。
 
 ```tsx
-const [hoge, setHoge] = React.useState<SampleType>(InitialArray)
+const [hoge, setHoge] = React.useState(InitialArray)
 ```
 
 これに悩まされて数時間無駄にしたので誰かのお役に立てば...
@@ -20,17 +20,15 @@ const [hoge, setHoge] = React.useState<SampleType>(InitialArray)
 
 問題となるコードのサンプルを作ってみました
 
-```tsx
-/*--------------------------------略*/
-const LunchList: React.FC = () => {
-  const [lunchlist, setList] = React.useState<Lunch[]>(InitialArray)
+```jsx
+const LunchList = () => {
+  const [lunchlist, setList] = React.useState(InitialArray)
 
   React.useEffect(() => {
     const setvalue = lunchlist
     setvalue.push('パスタ') //重要
     setList(setvalue)
   })
-  /*--------------------------------略*/
 }
 ```
 

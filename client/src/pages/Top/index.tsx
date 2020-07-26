@@ -7,36 +7,50 @@ import { Blog } from '../../models/Blog'
 import genres from '../../models/GENRES'
 
 const Top: React.FC = () => {
+  const genres: string[] = ['JavaScript', 'React', 'Other']
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
   const [genre, setGenre] = React.useState<string>('')
+  const [dispType, setDispType] = React.useState<number>(0)
   const params = new URLSearchParams(window.location.search)
   if (params.get('genre') !== genre) {
     setGenre(params.get('genre'))
   }
   React.useEffect(() => {
+    getAllBlog()
+  }, [genre])
+
+  const getAllBlog = async () => {
     setLoading(true)
-    if (genre) {
-      axios
-        .get('/api/getBlogs/', { params: { genre: params.get('genre') } })
-        .then((value) => {
-          setBlogs(value.data)
-          setLoading(false)
-        })
+    let result
+    if (!genre) {
+      result = await axios.get('/api/getBlogs/')
     } else {
-      axios.get('/api/getBlogs/').then((value) => {
-        setBlogs(value.data)
-        setLoading(false)
+      result = await axios.get('/api/getBlogs/', {
+        params: { genre: params.get('genre') }
       })
     }
-  }, [genre])
+    setBlogs(result.data)
+    setLoading(false)
+  }
   return (
     <React.Fragment>
       <DeskTop>
-        <TopDesk isLoading={isLoading} blogs={blogs} genres={genres} />
+        <TopDesk
+          isLoading={isLoading}
+          blogs={blogs}
+          genres={genres}
+          dispType={dispType}
+          setDispType={setDispType}
+        />
       </DeskTop>
       <Mobile>
-        <TopMob isLoading={isLoading} blogs={blogs} />
+        <TopMob
+          isLoading={isLoading}
+          blogs={blogs}
+          dispType={dispType}
+          setDispType={setDispType}
+        />
       </Mobile>
     </React.Fragment>
   )

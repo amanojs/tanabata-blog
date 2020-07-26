@@ -1,7 +1,7 @@
 import * as React from 'react'
 const ReactMarkdown = require('react-markdown')
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { tomorrow as codestyle } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { Fade } from '@material-ui/core'
 
 interface Props {
@@ -109,19 +109,61 @@ interface CodeProps {
 }
 
 const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
+  let styles: any = 'none'
+  if (
+    language !== 'javascript' &&
+    language !== 'typescript' &&
+    language !== 'jsx' &&
+    language !== 'tsx'
+  )
+    styles = codestyle
   return (
     <React.Fragment>
-      <SyntaxHighlighter language={language} style={darcula}>
+      <SyntaxHighlighter
+        language={language}
+        useInlineStyles={false}
+        style={styles}
+      >
         {value}
       </SyntaxHighlighter>
 
       <style jsx={true}>{`
+        pre {
+          padding: 20px 30px;
+          background-color: #364549;
+          color: #8bdf4c;
+          overflow-wrap: break-word;
+          margin: 20px 0;
+          overflow: scroll;
+        }
         code {
-          font-size: 20px;
+          font-size: 18px;
+          font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+            Courier, monospace;
+          font-weight: normal;
+        }
+        span.keyword {
+          color: #ebd247;
+        }
+        span.punctuation {
+          color: #e3e3e3;
+        }
+        span.operator {
+          color: #ff8095;
+        }
+        span.maybe-class-name,
+        span.class-name {
+          color: #8bdf4c;
+        }
+        span.function {
+          color: #ebd247;
+        }
+        span.comment {
+          color: #9dabae;
         }
         @media screen and (max-width: 1500px) {
           code {
-            font-size: 14.5px;
+            font-size: 13.5px;
           }
         }
       `}</style>
@@ -134,7 +176,6 @@ interface ImgProps {
 }
 
 const ImgBlock: React.FC<ImgProps> = (props) => {
-  console.log('呼ばれた？', props)
   return (
     <React.Fragment>
       <img src={props.src} style={{ objectFit: 'cover', maxWidth: '100%' }} />
