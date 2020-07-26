@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Slide, Fade, IconButton } from '@material-ui/core'
 import GENRES from '../models/GENRES'
-import { Close } from '@material-ui/icons'
+import { Close, Home, Category } from '@material-ui/icons'
 import histroy from '../modules/history'
 
 interface Props {
@@ -16,6 +16,16 @@ export const Menu: React.FC<Props> = (props) => {
           <h2>Menu</h2>
           <div className="menulist" style={{ overflowY: 'scroll' }}>
             <ul className="list">
+              <li
+                className="menulists"
+                onClick={() => {
+                  histroy.push('/')
+                  props.setMenuFlag(false)
+                }}
+              >
+                <Home />
+                <span>HOME</span>
+              </li>
               {...GENRES.map((genre, index) => (
                 <Slide
                   direction="right"
@@ -30,7 +40,8 @@ export const Menu: React.FC<Props> = (props) => {
                       props.setMenuFlag(false)
                     }}
                   >
-                    {genre}
+                    <Category />
+                    <span>{genre}</span>
                   </li>
                 </Slide>
               ))}
@@ -87,12 +98,17 @@ export const Menu: React.FC<Props> = (props) => {
           padding: 20px 0;
         }
         .menulists{
+            display: flex; 
+            align-items: center;
             list-style: none;
-            color: #111;
+            color: #333;
             padding: 20px 5px;
             border-bottom: 2px solid #eee;
             background-color: #fff;
             cursor: pointer;
+        }
+        .menulists span{
+          margin-left: 10px;
         }
         @media screen and (max-width: 500px) {
           .menu {

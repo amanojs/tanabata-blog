@@ -55,9 +55,19 @@ const TopDesk: React.FC<OwnProps> = (props) => {
           ))}
         </Box>
 
-        <Box display="flex" style={{ paddingTop: '30px' }}>
-          <Box className="categorybox" width="40%">
-            カテゴリ:
+        <Box display="flex">
+          <Box
+            className="categorybox"
+            width="40%"
+            display="flex"
+            alignItems="center"
+            boxSizing="border-box"
+            border="1px solid #3F51B5"
+            padding="15px 0 15px 10px"
+            margin="10px 0"
+            fontSize="20px"
+            style={{ borderWidth: '0 0 1px 15px' }}
+          >
             {new URLSearchParams(window.location.search).get('genre') ||
               '最新の記事'}
           </Box>

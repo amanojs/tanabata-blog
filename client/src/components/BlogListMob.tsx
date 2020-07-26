@@ -40,7 +40,8 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
                 flexWrap: 'wrap',
                 alignItems: 'start',
                 height: props.dispType === 0 ? '550px' : 'auto',
-                minHeight: '70px'
+                minHeight: '70px',
+                margin: props.dispType === 0 ? '10px 0' : '2px 0'
               }}
               onClick={() => history.push(`/blog?title=${item.title}`)}
             >

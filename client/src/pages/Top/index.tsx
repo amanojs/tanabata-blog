@@ -10,7 +10,7 @@ const Top: React.FC = () => {
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
   const [genre, setGenre] = React.useState<string>('')
-  const [dispType, setDispType] = React.useState<number>(0)
+  const [dispType, setDispType] = React.useState<number>(1)
   const params = new URLSearchParams(window.location.search)
   if (params.get('genre') !== genre) {
     setGenre(params.get('genre'))
