@@ -5,19 +5,28 @@ import { Router, Switch, Route, Link } from 'react-router-dom'
 import history from './modules/history'
 import Top from './pages/Top/'
 import BlogPage from './pages/Blog/'
+import { Menu } from './components/Menu'
 
 const App: React.FC = () => {
+  const [menuFlag, setMenuFlag] = React.useState<boolean>(false)
   return (
     <React.Fragment>
       <Router history={history}>
         <AppBar position="static" style={{ backgroundColor: '#444' }}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={() => setMenuFlag(true)}
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6">タナバタ.Blog</Typography>
           </Toolbar>
         </AppBar>
+
+        {menuFlag && <Menu setMenuFlag={setMenuFlag} />}
 
         <Box bgcolor="#eee" width="100%" minHeight="100vh" padding="20px 0">
           <Switch>

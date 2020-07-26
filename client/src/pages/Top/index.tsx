@@ -4,9 +4,9 @@ import axios from 'axios'
 import TopDesk from './TopDesk'
 import TopMob from './TopMob'
 import { Blog } from '../../models/Blog'
+import genres from '../../models/GENRES'
 
 const Top: React.FC = () => {
-  const genres: string[] = ['JavaScript', 'React', 'その他']
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
   const [genre, setGenre] = React.useState<string>('')
