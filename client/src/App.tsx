@@ -15,7 +15,9 @@ const App: React.FC = () => {
             <IconButton edge="start" color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6">タナバタ.Blog</Typography>
+            <h6 onClick={() => history.push('/')} style={{ cursor: 'pointer' }}>
+              タナバタ.Blog
+            </h6>
           </Toolbar>
         </AppBar>
 
