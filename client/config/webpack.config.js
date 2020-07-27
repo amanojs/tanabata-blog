@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const path = require('path')
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
@@ -65,5 +66,5 @@ module.exports = {
     modules: ['node_modules'],
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss']
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [htmlWebpackPlugin, new HardSourceWebpackPlugin()]
 }
