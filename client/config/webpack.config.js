@@ -8,6 +8,7 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 })
 
 module.exports = {
+  mode: 'production',
   entry: {
     index: './client/src/index.js'
   },
@@ -15,6 +16,11 @@ module.exports = {
     path: path.resolve('client/dist'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].chunk.js'//変えた
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
