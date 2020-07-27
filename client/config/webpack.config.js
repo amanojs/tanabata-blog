@@ -12,7 +12,8 @@ module.exports = {
   },
   output: {
     path: path.resolve('client/dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].chunk.js'//変えた
   },
   module: {
     rules: [
@@ -61,6 +62,7 @@ module.exports = {
     ]
   },
   resolve: {
+    modules: ['node_modules'],
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss']
   },
   plugins: [htmlWebpackPlugin]

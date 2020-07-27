@@ -3,7 +3,9 @@
     "outDir": "./client/dist/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext", //変えた
+    "typeRoots": ["./node_modules/@types"], //追加した
+    "moduleResolution": "node" /* 追加した */,
     "target": "es6",
     "jsx": "react"
   },

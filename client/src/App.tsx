@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { AppBar, Toolbar, IconButton, Typography, Box } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Box } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import { Router, Switch, Route, Link } from 'react-router-dom'
+import { Router, Switch, Route } from 'react-router-dom'
 import history from './modules/history'
 //import Top from './pages/Top/'
 const Top = React.lazy(() => import('./pages/Top/'))

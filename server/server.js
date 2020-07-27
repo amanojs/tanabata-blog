@@ -17,6 +17,36 @@ app.use(
   express.static(path.join('./', 'client', 'dist', 'index.bundle.js'))
 )
 
+app.use(
+  '/0.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '0.chunk.js'))
+)
+
+app.use(
+  '/1.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '1.chunk.js'))
+)
+
+app.use(
+  '/2.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '2.chunk.js'))
+)
+
+app.use(
+  '/3.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '3.chunk.js'))
+)
+
+app.use(
+  '/4.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '4.chunk.js'))
+)
+
+app.use(
+  '/5.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '5.chunk.js'))
+)
+
 const storage = multer.diskStorage({
   destination: path.join('./', 'blogs', 'markdowns'),
   filename: function (req, file, cb) {
