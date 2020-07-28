@@ -14,6 +14,11 @@ module.exports = merge(webpackConfig, {
         target: 'http://localhost:3000',
         secure: false,
         logLevel: 'debug'
+      },
+      '/static': {
+        target: 'http://localhost:3000',
+        secure: false,
+        logLevel: 'debug'
       }
     }
   }

@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     height: 550,
     margin: ' 10px 0',
     backgroundColor: '#fff',
-    borderRadius: '3px',
     cursor: 'pointer',
     overflow: 'hidden'
   }
@@ -33,7 +32,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
             key={index}
             in={props.blogs.length ? true : false}
           >
-            <Paper
+            <div
               className={classes.blog}
               style={{
                 display: props.dispType === 0 ? 'block' : 'flex',
@@ -41,13 +40,19 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
                 alignItems: 'start',
                 height: props.dispType === 0 ? '550px' : 'auto',
                 minHeight: '70px',
-                margin: props.dispType === 0 ? '10px 0' : '2px 0'
+                margin: props.dispType === 0 ? '10px 0' : '2px 0',
+                borderRadius: props.dispType === 0 ? '2px' : '0'
               }}
               onClick={() => history.push(`/blog?title=${item.title}`)}
             >
               {props.dispType === 0 ? (
                 <React.Fragment>
-                  <h2 style={{ padding: '20px', fontSize: '90%' }}>
+                  <h2
+                    style={{
+                      padding: '20px',
+                      fontSize: '90%'
+                    }}
+                  >
                     {item.title}
                   </h2>
                   <img
@@ -82,6 +87,8 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
                   <Box width="80%">
                     <h2
                       style={{
+                        display: 'flex',
+                        alignItems: 'center',
                         color: '#555',
                         fontSize: '75%',
                         overflow: 'hidden',
@@ -97,7 +104,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
               ) : (
                 false
               )}
-            </Paper>
+            </div>
           </Slide>
         ))}
       </Box>

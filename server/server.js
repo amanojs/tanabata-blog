@@ -13,6 +13,11 @@ app.set('view engine', 'ejs');
 const URL = 'http://localhost:3000'
 
 app.use(
+  '/static',
+  express.static(path.join('./', 'server', 'static'))
+)
+
+app.use(
   '/index.bundle.js',
   express.static(path.join('./', 'client', 'dist', 'index.bundle.js'))
 )

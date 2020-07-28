@@ -24,8 +24,19 @@ const TopMob: React.FC<OwnProps> = (props) => {
       >
         <ProfileBoxMob />
         <Box display="flex" style={{ paddingTop: '30px' }}>
-          <Box className="categorybox" width="50%">
-            カテゴリ:
+          <Box
+            className="categorybox"
+            width="40%"
+            display="flex"
+            alignItems="center"
+            boxSizing="border-box"
+            border="1px solid #3F51B5"
+            padding="10px 0 10px 10px"
+            margin="0px 0 15px 0"
+            fontSize="17px"
+            fontWeight="bold"
+            style={{ borderWidth: '0 0 1px 15px' }}
+          >
             {new URLSearchParams(window.location.search).get('genre') ||
               '最新の記事'}
           </Box>
@@ -36,28 +47,34 @@ const TopMob: React.FC<OwnProps> = (props) => {
             alignItems="center"
             width="50%"
           >
-            <p>表示形式:</p>
             <IconButton
               edge="start"
-              color={props.dispType === 0 ? 'primary' : 'inherit'}
               aria-label="menu"
               style={{ display: 'block', marginLeft: 0 }}
               onClick={() => {
                 props.setDispType(0)
               }}
             >
-              <CallToAction fontSize="small" />
+              <CallToAction
+                fontSize="small"
+                style={{
+                  color: props.dispType === 0 ? '#61C1BE' : '#999'
+                }}
+              />
             </IconButton>
             <IconButton
               edge="start"
-              color={props.dispType === 1 ? 'primary' : 'inherit'}
               aria-label="menu"
               style={{ display: 'block', marginLeft: 0 }}
               onClick={() => {
                 props.setDispType(1)
               }}
             >
-              <ViewList />
+              <ViewList
+                style={{
+                  color: props.dispType === 1 ? '#61C1BE' : '#999'
+                }}
+              />
             </IconButton>
           </Box>
         </Box>

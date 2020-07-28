@@ -113,7 +113,7 @@ export const Menu: React.FC<Props> = (props) => {
         @media screen and (max-width: 500px) {
           .menu {
             width: 100%;
-            height: 100vh;
+            height: 85vh;
             border-radius: 0;
             padding: 20px 30px;
           }

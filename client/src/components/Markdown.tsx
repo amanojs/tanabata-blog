@@ -33,7 +33,7 @@ export const Markdown: React.FC<Props> = (props) => {
           }
           .markdown h2 {
             font-size: 28px;
-            border: 5px solid #4bb543;
+            border: 5px solid #116fab;
             border-width: 0 0 2px 30px;
           }
           .markdown p {
@@ -74,7 +74,7 @@ export const Markdown: React.FC<Props> = (props) => {
               padding: 10px;
               margin: 50px 0 20px 0;
               font-size: 20px;
-              border: 5px solid #4bb543;
+              border: 5px solid #116fab;
               border-width: 0 0 2px 10px;
             }
             .markdown p {
@@ -132,9 +132,9 @@ const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
           padding: 20px 30px;
           background-color: #364549;
           color: #8bdf4c;
-          overflow-wrap: break-word;
           margin: 20px 0;
           overflow: scroll;
+          transform: translateZ(0);
         }
         code {
           font-size: 18px;

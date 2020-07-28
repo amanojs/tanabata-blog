@@ -14,10 +14,10 @@ export const ProfileBox: React.FC<OwnProps> = (props) => {
   const stucks = {
     display: 'inline-block',
     padding: '5px 10px',
-    backgroundColor: '#eee',
+    backgroundColor: '#455AAB',
     margin: '0 5px 3px 0',
     fontSize: '13px',
-    color: '#555'
+    color: '#fff'
   }
   return (
     <React.Fragment>
@@ -43,7 +43,15 @@ export const ProfileBox: React.FC<OwnProps> = (props) => {
                 width="100%"
               />
             </Box>
-            <Box margin="20px 0">Amano.js</Box>
+            <Box
+              display="inline-block"
+              padding="5px 30px"
+              borderBottom="5px solid rgb(93,135,183)"
+              margin="10px 0"
+              width="auto"
+            >
+              Amano.js
+            </Box>
             <p
               style={{
                 width: '240px',

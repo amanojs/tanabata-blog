@@ -1,7 +1,6 @@
 import * as React from 'react'
 import axios from 'axios'
 import { BlogDetail } from '../../models/BlogDetail'
-import { Box } from '@material-ui/core'
 import { DeskTop, Mobile } from '../../modules/mediaqueries'
 import BlogDesk from './BlogDesk'
 import BlogMob from './BlogMob'

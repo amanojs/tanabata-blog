@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { Box, Button, LinearProgress, IconButton } from '@material-ui/core'
+import { Box, LinearProgress, IconButton } from '@material-ui/core'
 import { CallToAction, ViewList } from '@material-ui/icons'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
 import { ProfileBox } from '../../components/ProfileBox'
-import history from '../../modules/history'
 
 interface OwnProps {
   isLoading: boolean
@@ -22,9 +21,9 @@ const TopDesk: React.FC<OwnProps> = (props) => {
         className="TopContainer"
         boxSizing="border-box"
         padding="0 20px"
-        margin="15px auto"
+        margin="0px auto"
       >
-        <Box
+        {/* <Box
           width="100%"
           display="flex"
           flexWrap="wrap"
@@ -53,7 +52,7 @@ const TopDesk: React.FC<OwnProps> = (props) => {
               {item}
             </Button>
           ))}
-        </Box>
+        </Box> */}
 
         <Box display="flex">
           <Box
@@ -64,8 +63,9 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             boxSizing="border-box"
             border="1px solid #3F51B5"
             padding="15px 0 15px 10px"
-            margin="10px 0"
-            fontSize="20px"
+            margin="5px 0 15px 0"
+            fontSize="17px"
+            fontWeight="bold"
             style={{ borderWidth: '0 0 1px 15px' }}
           >
             {new URLSearchParams(window.location.search).get('genre') ||
@@ -78,32 +78,38 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             alignItems="center"
             width="27.8%"
           >
-            <p>表示形式:</p>
             <IconButton
               edge="start"
-              color={props.dispType === 0 ? 'primary' : 'inherit'}
               aria-label="menu"
               style={{ display: 'block', marginLeft: 0 }}
               onClick={() => {
                 props.setDispType(0)
               }}
             >
-              <CallToAction fontSize="small" />
+              <CallToAction
+                fontSize="small"
+                style={{
+                  color: props.dispType === 0 ? '#61C1BE' : '#999'
+                }}
+              />
             </IconButton>
             <IconButton
               edge="start"
-              color={props.dispType === 1 ? 'primary' : 'inherit'}
               aria-label="menu"
               style={{ display: 'block', marginLeft: 0 }}
               onClick={() => {
                 props.setDispType(1)
               }}
             >
-              <ViewList />
+              <ViewList
+                style={{
+                  color: props.dispType === 1 ? '#61C1BE' : '#999'
+                }}
+              />
             </IconButton>
           </Box>
         </Box>
-        <Box display="flex" minHeight="90vh">
+        <Box display="flex" minHeight="550px">
           {props.isLoading ? (
             <LinearProgress
               style={{ width: '70%', margin: '-10px 25px 0 0' }}
