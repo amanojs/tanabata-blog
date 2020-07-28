@@ -129,6 +129,12 @@ app.get('/api/getBlog/', (req, res) => {
   })
 })
 
+app.get('/blog', (req, res) => {
+  console.log('blogpage')
+  const blog = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'jsons', `${req.query.title}.json`), 'utf8'))
+  res.render('blogpage', { blog: blog, URL: URL })
+})
+
 app.get('*', (req, res) => {
   console.log('アクセスされました')
   res.sendFile(path.join('./', 'client', 'dist', 'index.html'), { root: '.' })
