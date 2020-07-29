@@ -97,6 +97,9 @@ export const Menu: React.FC<Props> = (props) => {
           transform: translateZ(0);
           padding: 20px 0;
         }
+        .menulist::-webkit-scrollbar{
+          display: none;
+        }
         .menulists{
             display: flex; 
             align-items: center;

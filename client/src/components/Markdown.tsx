@@ -136,6 +136,9 @@ const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
           overflow: scroll;
           transform: translateZ(0);
         }
+        pre::-webkit-scrollbar {
+          display: none;
+        }
         code {
           font-size: 18px;
           font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,

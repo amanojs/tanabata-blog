@@ -26,7 +26,7 @@ const TopMob: React.FC<OwnProps> = (props) => {
         <Box display="flex" style={{ paddingTop: '30px' }}>
           <Box
             className="categorybox"
-            width="40%"
+            width="50%"
             display="flex"
             alignItems="center"
             boxSizing="border-box"
