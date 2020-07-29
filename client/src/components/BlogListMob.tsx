@@ -56,7 +56,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
                     {item.title}
                   </h2>
                   <img
-                    src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
+                    src={item.img}
                     width="100%"
                     height="350px"
                     alt="blog img"
@@ -78,7 +78,7 @@ export const BlogListMob: React.FC<OwnProps> = (props) => {
               {props.dispType === 1 ? (
                 <React.Fragment>
                   <img
-                    src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198_1280.jpg"
+                    src={item.img}
                     width="20%"
                     height="70px"
                     alt="blog img"

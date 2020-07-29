@@ -1,6 +1,7 @@
 ---
 title: JavaScriptでURLクエリパラメータの値を簡単に取得する方法copy
 tags: JavaScript
+img: https://cdn-ak.f.st-hatena.com/images/fotolife/n/northgeek/20160410/20160410154524.jpg
 created_at: '2020-07-23 16:08:00'
 ---
 

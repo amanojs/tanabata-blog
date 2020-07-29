@@ -5,6 +5,7 @@ export interface BlogDetail {
   tags: string
   dir: string
   ext: string
+  img: string
   preview: string
   sourceBase: string
   sourceExt: string
