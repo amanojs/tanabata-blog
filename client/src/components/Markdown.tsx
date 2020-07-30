@@ -164,6 +164,16 @@ const CodeBlock: React.FC<CodeProps> = ({ language, value }) => {
         span.comment {
           color: #9dabae;
         }
+        span.tag {
+          color: #ff8095;
+        }
+        span.plain-text {
+          color: #fff;
+        }
+        span.string,
+        span.attr-value {
+          color: #41b7d7;
+        }
         @media screen and (max-width: 1500px) {
           code {
             font-size: 13.5px;

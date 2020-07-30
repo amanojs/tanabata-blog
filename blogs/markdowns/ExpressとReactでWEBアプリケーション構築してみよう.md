@@ -105,7 +105,7 @@ module.exports = {
 
 #### ▶ まずベースとなる html
 
-```HTML
+```jsx
 <!DOCTYPE html>
 <html lang="ja">
   <head>
