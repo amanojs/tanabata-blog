@@ -146,12 +146,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join('./', 'client', 'dist', 'index.html'), { root: '.' })
 })
 
-/* app.listen(3000, () => {
+app.listen(3000, () => {
   console.log('server running...')
-}) */
-
-const httpServer = http.Server(app)
-httpServer.listen(80, () => {
-  process.setuid(1000)
-  console.log('server 80')
 })
