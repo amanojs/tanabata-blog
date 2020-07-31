@@ -3,19 +3,17 @@ import path from 'path'
 import multer from 'multer'
 import cors from 'cors'
 import fs from 'fs'
-const ejs = require('ejs');
+const http = require('http')
+const ejs = require('ejs')
 
 const app = express()
 app.use(cors())
-app.engine('ejs', ejs.renderFile);
-app.set('view engine', 'ejs');
+app.engine('ejs', ejs.renderFile)
+app.set('view engine', 'ejs')
 
 const URL = 'http://localhost:3000'
 
-app.use(
-  '/static',
-  express.static(path.join('./', 'server', 'static'))
-)
+app.use('/static', express.static(path.join('./', 'server', 'static')))
 
 app.use(
   '/index.bundle.js',
@@ -67,7 +65,6 @@ app.use(
   express.static(path.join('./', 'client', 'dist', 'vendors~index.chunk.js'))
 )
 
-
 const storage = multer.diskStorage({
   destination: path.join('./', 'blogs', 'markdowns'),
   filename: function (req, file, cb) {
@@ -98,17 +95,21 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/sitemap.xml', (req, res) => {
-  const summary = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8'))
+  const summary = JSON.parse(
+    fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8')
+  )
   let urls = []
   Object.keys(summary.fileMap).forEach((key) => {
     urls = [...urls, URL + '/blog?title=' + summary.fileMap[key].title]
   })
-  res.setHeader('Content-Type', 'text/xml');
+  res.setHeader('Content-Type', 'text/xml')
   res.render('sitemap_base', { URL: URL, urls: urls })
 })
 
 app.get('/api/getBlogs/', (req, res) => {
-  const summary = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8'))
+  const summary = JSON.parse(
+    fs.readFileSync(path.join('./', 'blogs', 'summary.json'), 'utf8')
+  )
   let blogs = []
   Object.keys(summary.fileMap).forEach((key) => {
     blogs = [...blogs, summary.fileMap[key]]
@@ -131,7 +132,12 @@ app.get('/api/getBlog/', (req, res) => {
 
 app.get('/blog', (req, res) => {
   console.log('blogpage')
-  const blog = JSON.parse(fs.readFileSync(path.join('./', 'blogs', 'jsons', `${req.query.title}.json`), 'utf8'))
+  const blog = JSON.parse(
+    fs.readFileSync(
+      path.join('./', 'blogs', 'jsons', `${req.query.title}.json`),
+      'utf8'
+    )
+  )
   res.render('blogpage', { blog: blog, URL: URL })
 })
 
@@ -140,6 +146,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join('./', 'client', 'dist', 'index.html'), { root: '.' })
 })
 
-app.listen(3000, () => {
+/* app.listen(3000, () => {
   console.log('server running...')
+}) */
+
+const httpServer = http.Server(app)
+httpServer.listen(80, () => {
+  process.setuid(1000)
+  console.log('server 80')
 })
