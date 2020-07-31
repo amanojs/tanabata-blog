@@ -3,7 +3,6 @@ import path from 'path'
 import multer from 'multer'
 import cors from 'cors'
 import fs from 'fs'
-const http = require('http')
 const ejs = require('ejs')
 
 const app = express()
@@ -11,7 +10,7 @@ app.use(cors())
 app.engine('ejs', ejs.renderFile)
 app.set('view engine', 'ejs')
 
-const URL = 'http://localhost:3000'
+const URL = 'http://tanabatablog.net'
 
 app.use('/static', express.static(path.join('./', 'server', 'static')))
 
