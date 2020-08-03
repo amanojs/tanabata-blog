@@ -8,42 +8,32 @@
 
   <url>
     <loc><%= URL %></loc>
-    <lastmod
-      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
-    >
+    <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc><%= URL %>/?genre=JavaScript</loc>
-    <lastmod
-      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
-    >
+    <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc><%= URL %>/?genre=React</loc>
-    <lastmod
-      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
-    >
+    <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc><%= URL %>/?genre=Other</loc>
-    <lastmod
-      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
-    >
+    <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <% for(var i = 0; i < urls.length; i++){ %>
   <url>
     <loc><%= urls[i]%></loc>
-    <lastmod
-      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
-    >
+    <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
