@@ -61,7 +61,7 @@ app.use(
 
 app.use(
   '/8.chunk.js',
-  express.static(path.join('./', 'client', 'dist', '7.chunk.js'))
+  express.static(path.join('./', 'client', 'dist', '8.chunk.js'))
 )
 
 app.use(
