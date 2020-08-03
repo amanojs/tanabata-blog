@@ -1,42 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <% var date = new Date(); %>
-    <% date.setDate(date.getDate() - 1); %>
-    <% var day = date.getDate();var mon = date.getMonth()+1;%>
-    <% var year = date.getFullYear();var h = date.getHours();var m = date.getMinutes();var s = date.getSeconds(); %>
-    <% if(mon < 10) {mon = "0" + String(mon);}%>
-    <% if(day < 10) {mon = "0" + String(day);}%>
+  <% var date = new Date(); %> <% date.setDate(date.getDate() - 1); %> <% var
+  day = date.getDate();var mon = date.getMonth()+1;%> <% var year =
+  date.getFullYear();var h = date.getHours();var m = date.getMinutes();var s =
+  date.getSeconds(); %> <% if(mon < 10) {mon = "0" + String(mon);}%> <% if(day <
+  10) {day = "0" + String(day);}%>
 
-    <url>
-        <loc><%= URL %></loc>
-        <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc><%= URL %>/?genre=JavaScript</loc>
-        <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc><%= URL %>/?genre=React</loc>
-        <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc><%= URL %>/?genre=Other</loc>
-        <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <% for(var i = 0; i <  urls.length; i++){ %>
-    <url>
-        <loc><%= urls[i]%></loc>
-        <lastmod><%= year %>-<%= mon%>-<%= day%>T00:00:00+09:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <% } %>
+  <url>
+    <loc><%= URL %></loc>
+    <lastmod
+      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
+    >
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc><%= URL %>/?genre=JavaScript</loc>
+    <lastmod
+      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
+    >
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc><%= URL %>/?genre=React</loc>
+    <lastmod
+      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
+    >
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc><%= URL %>/?genre=Other</loc>
+    <lastmod
+      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
+    >
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <% for(var i = 0; i < urls.length; i++){ %>
+  <url>
+    <loc><%= urls[i]%></loc>
+    <lastmod
+      ><%= year %>-<%= mon%>-<%= day%>T<%= h%>:<%= m%>:<%= s%>+09:00</lastmod
+    >
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <% } %>
 </urlset>
