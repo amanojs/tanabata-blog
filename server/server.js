@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 const URL = 'http://tanabatablog.net'
 
 app.use('/static', express.static(path.join('./', 'server', 'static')))
-
+app.use('/robots.txt', express.static(path.join('./', 'robots.txt')))
 app.use(
   '/index.bundle.js',
   express.static(path.join('./', 'client', 'dist', 'index.bundle.js'))
@@ -56,6 +56,11 @@ app.use(
 
 app.use(
   '/7.chunk.js',
+  express.static(path.join('./', 'client', 'dist', '7.chunk.js'))
+)
+
+app.use(
+  '/8.chunk.js',
   express.static(path.join('./', 'client', 'dist', '7.chunk.js'))
 )
 

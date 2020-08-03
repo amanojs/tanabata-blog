@@ -79,6 +79,7 @@ const BlogDesk: React.FC<Props> = (props) => {
           transition: 0.2s;
           border-radius: 2px;
           padding: 5px 3px;
+          margin-bottom: 5px;
         }
         .items:hover {
           background-color: #f5f5f5;

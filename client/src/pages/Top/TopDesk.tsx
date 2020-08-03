@@ -1,9 +1,18 @@
 import * as React from 'react'
-import { Box, LinearProgress, IconButton } from '@material-ui/core'
+import {
+  Box,
+  LinearProgress,
+  IconButton,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
+} from '@material-ui/core'
 import { CallToAction, ViewList } from '@material-ui/icons'
 import { BlogList } from '../../components/BlogList'
 import { Blog } from '../../models/Blog'
 import { ProfileBox } from '../../components/ProfileBox'
+import history from '../../modules/history'
 
 interface OwnProps {
   isLoading: boolean
@@ -11,6 +20,7 @@ interface OwnProps {
   blogs: Blog[]
   dispType: number
   setDispType(i: number): void
+  nowGenre: string
 }
 
 const TopDesk: React.FC<OwnProps> = (props) => {
@@ -78,6 +88,27 @@ const TopDesk: React.FC<OwnProps> = (props) => {
             alignItems="center"
             width="27.8%"
           >
+            <FormControl variant="outlined" style={{ minWidth: '200px' }}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                カテゴリ
+              </InputLabel>
+              <Select
+                value={props.nowGenre}
+                onChange={(e) => {
+                  e.target.value
+                    ? history.push(`/?genre=${e.target.value}`)
+                    : history.push(`/`)
+                }}
+                label="カテゴリ"
+              >
+                <MenuItem value={null}>
+                  <em>最新</em>
+                </MenuItem>
+                {props.genres.map((genre: string) => (
+                  <MenuItem value={genre}>{genre}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <IconButton
               edge="start"
               aria-label="menu"

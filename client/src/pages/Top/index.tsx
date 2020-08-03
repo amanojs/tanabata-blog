@@ -9,7 +9,7 @@ import genres from '../../models/GENRES'
 const Top: React.FC = () => {
   const [blogs, setBlogs] = React.useState<Blog[]>([])
   const [isLoading, setLoading] = React.useState<boolean>(false)
-  const [genre, setGenre] = React.useState<string>('')
+  const [genre, setGenre] = React.useState<string>(null)
   const [dispType, setDispType] = React.useState<number>(1)
   const params = new URLSearchParams(window.location.search)
   if (params.get('genre') !== genre) {
@@ -40,6 +40,7 @@ const Top: React.FC = () => {
             isLoading={isLoading}
             blogs={blogs}
             genres={genres}
+            nowGenre={genre}
             dispType={dispType}
             setDispType={setDispType}
           />
