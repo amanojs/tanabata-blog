@@ -15,6 +15,11 @@ const URL = 'http://tanabatablog.net'
 app.use('/static', express.static(path.join('./', 'server', 'static')))
 app.use('/robots.txt', express.static(path.join('./', 'robots.txt')))
 app.use(
+  '/google979c0bc2279f3168.html',
+  express.static(path.join('./', 'google979c0bc2279f3168.html'))
+)
+
+app.use(
   '/index.bundle.js',
   express.static(path.join('./', 'client', 'dist', 'index.bundle.js'))
 )
