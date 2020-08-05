@@ -1,15 +1,26 @@
 import * as React from 'react'
 import { Blog } from '../../models/Blog'
-import { Box, LinearProgress, IconButton } from '@material-ui/core'
+import {
+  Box,
+  LinearProgress,
+  IconButton,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select
+} from '@material-ui/core'
 import { CallToAction, ViewList } from '@material-ui/icons'
 import { BlogListMob } from '../../components/BlogListMob'
 import { ProfileBoxMob } from '../../components/ProfileBoxMob'
+import history from '../../modules/history'
 
 interface OwnProps {
   isLoading: boolean
   blogs: Blog[]
   dispType: number
   setDispType(i: number): void
+  genres: string[]
+  nowGenre: string
 }
 
 const TopMob: React.FC<OwnProps> = (props) => {
@@ -47,6 +58,30 @@ const TopMob: React.FC<OwnProps> = (props) => {
             alignItems="center"
             width="50%"
           >
+            <label>
+              <Box fontSize="10px">カテゴリ</Box>
+              <FormControl
+                variant="outlined"
+                style={{ width: '60px', marginBottom: '15px' }}
+              >
+                <Select
+                  style={{ height: '20px', fontSize: '9px' }}
+                  value={props.nowGenre}
+                  onChange={(e) => {
+                    e.target.value
+                      ? history.push(`/?genre=${e.target.value}`)
+                      : history.push(`/`)
+                  }}
+                >
+                  <MenuItem value={null}>
+                    <em>最新</em>
+                  </MenuItem>
+                  {props.genres.map((genre: string) => (
+                    <MenuItem value={genre}>{genre}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </label>
             <IconButton
               edge="start"
               aria-label="menu"

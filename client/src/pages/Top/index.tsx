@@ -50,6 +50,8 @@ const Top: React.FC = () => {
             isLoading={isLoading}
             blogs={blogs}
             dispType={dispType}
+            genres={genres}
+            nowGenre={genre}
             setDispType={setDispType}
           />
         </Mobile>
