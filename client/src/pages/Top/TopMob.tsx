@@ -34,7 +34,7 @@ const TopMob: React.FC<OwnProps> = (props) => {
         margin="0 auto"
       >
         <ProfileBoxMob />
-        <Box display="flex" style={{ paddingTop: '30px' }}>
+        <Box display="flex" style={{ paddingTop: '10px' }}>
           <Box
             className="categorybox"
             width="50%"

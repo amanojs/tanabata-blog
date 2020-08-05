@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Box } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
+import { Twitter, Instagram } from '@material-ui/icons'
 
 export const ProfileBoxMob: React.FC = () => {
   return (
@@ -43,6 +44,35 @@ export const ProfileBoxMob: React.FC = () => {
             名古屋でフロントエンド開発をしている21才です。TypeScript +
             Reactを使っての開発が得意です。まだまだヒヨッコですが精一杯記事を残していきます。
           </div>
+        </Box>
+        <Box marginTop="10px">
+          <Button
+            onClick={() => window.open('https://twitter.com/_amanojs')}
+            style={{
+              width: '100%',
+              height: '30px',
+              backgroundColor: '#2399E1',
+              marginBottom: '5px',
+              color: '#fff'
+            }}
+          >
+            <Twitter />
+            フォローする
+          </Button>
+          <Button
+            onClick={() =>
+              window.open('https://www.instagram.com/takashi_newlife/?hl=ja')
+            }
+            style={{
+              width: '100%',
+              height: '30px',
+              backgroundColor: '#193358',
+              color: '#fff'
+            }}
+          >
+            <Instagram />
+            フォローする
+          </Button>
         </Box>
       </Box>
     </React.Fragment>

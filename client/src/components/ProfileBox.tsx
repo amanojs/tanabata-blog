@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Box } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
+import { Twitter, Instagram } from '@material-ui/icons'
 
 interface OwnProps {
   width: string
@@ -63,13 +64,40 @@ export const ProfileBox: React.FC<OwnProps> = (props) => {
               名古屋でフロントエンド開発をしている21才です。TypeScript +
               Reactを使っての開発が得意です。まだまだヒヨッコですが精一杯記事を残していきます。
             </p>
-            <Box>
+            <Box marginBottom="10px">
               <span style={stucks}>JavaScript</span>
               <span style={stucks}>TypeScript</span>
               <span style={stucks}>React</span>
               <span style={stucks}>Vue.js</span>
               <span style={stucks}>Node.js</span>
             </Box>
+            <Button
+              onClick={() => window.open('https://twitter.com/_amanojs')}
+              style={{
+                width: '100%',
+                height: '30px',
+                backgroundColor: '#2399E1',
+                marginBottom: '5px',
+                color: '#fff'
+              }}
+            >
+              <Twitter />
+              フォローする
+            </Button>
+            <Button
+              onClick={() =>
+                window.open('https://www.instagram.com/takashi_newlife/?hl=ja')
+              }
+              style={{
+                width: '100%',
+                height: '30px',
+                backgroundColor: '#193358',
+                color: '#fff'
+              }}
+            >
+              <Instagram />
+              フォローする
+            </Button>
           </Box>
         </Box>
       </Box>

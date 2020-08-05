@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Slide, Fade, IconButton } from '@material-ui/core'
 import GENRES from '../models/GENRES'
-import { Close, Home, Category, Twitter } from '@material-ui/icons'
+import { Close, Home, Category, Twitter, Instagram } from '@material-ui/icons'
 import histroy from '../modules/history'
 
 interface Props {
@@ -35,6 +35,18 @@ export const Menu: React.FC<Props> = (props) => {
               >
                 <Twitter />
                 <span>Twitter</span>
+              </li>
+              <li
+                className="menulists"
+                onClick={() => {
+                  window.open(
+                    'https://www.instagram.com/takashi_newlife/?hl=ja'
+                  )
+                  props.setMenuFlag(false)
+                }}
+              >
+                <Instagram />
+                <span>Instagram</span>
               </li>
               {...GENRES.map((genre, index) => (
                 <Slide
