@@ -12,6 +12,18 @@
       "sourceBase": "JavaScriptでURLクエリパラメータの値を簡単に取得する方法.md",
       "sourceExt": ".md"
     },
+    "blogs/jsons/Node.jsでwebサーバーを構築する流れ#1【本当の基礎】.json": {
+      "title": "Node.jsでwebサーバーを構築する流れ#1【本当の基礎】",
+      "img": "https://i.imgur.com/9MM74X2.jpg",
+      "tags": "Node.js",
+      "created_at": "2020-08-07 11:16:00",
+      "preview": "",
+      "dir": "blogs/jsons",
+      "base": "Node.jsでwebサーバーを構築する流れ#1【本当の基礎】.json",
+      "ext": ".json",
+      "sourceBase": "Node.jsでwebサーバーを構築する流れ#1【本当の基礎】.md",
+      "sourceExt": ".md"
+    },
     "blogs/jsons/ExpressとReactでWEBアプリケーション構築してみよう.json": {
       "title": "ExpressとReactでWEBアプリケーション構築してみよう",
       "tags": "React",
@@ -40,6 +52,7 @@
   "sourceFileArray": [
     "blogs/markdowns/ExpressとReactでWEBアプリケーション構築してみよう.md",
     "blogs/markdowns/JavaScriptでURLクエリパラメータの値を簡単に取得する方法.md",
+    "blogs/markdowns/Node.jsでwebサーバーを構築する流れ#1【本当の基礎】.md",
     "blogs/markdowns/ReactのuseStateのセッターで配列を更新しても再レンダリングされない時.md"
   ]
 }
