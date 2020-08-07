@@ -42,7 +42,7 @@ export const BlogList: React.FC<OwnProps> = (props) => {
                 height: props.dispType === 0 ? '550px' : 'auto',
                 minHeight: '100px'
               }}
-              onClick={() => history.push(`/blog?title=${item.title}`)}
+              onClick={() => history.push(`/blog?title=${item.base.slice(0, -5)}`)}
             >
               {/* カード表示 */}
               {props.dispType === 0 ? (
@@ -76,8 +76,8 @@ export const BlogList: React.FC<OwnProps> = (props) => {
                   </p>
                 </React.Fragment>
               ) : (
-                false
-              )}
+                  false
+                )}
 
               {/* リスト表示 */}
               {props.dispType === 1 ? (
@@ -116,8 +116,8 @@ export const BlogList: React.FC<OwnProps> = (props) => {
                   </Box>
                 </React.Fragment>
               ) : (
-                false
-              )}
+                  false
+                )}
             </Paper>
           </Slide>
         ))}
