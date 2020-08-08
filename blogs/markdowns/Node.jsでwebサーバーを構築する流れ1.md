@@ -85,3 +85,4 @@ app.listen(PORT,()=>{
 
 ## おつかれさまです
 キリがいいので1章はここまで！2章はこちら↓
+http://tanabatablog.net/blog?title=Node.jsでwebサーバーを構築する流れ2
